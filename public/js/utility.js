@@ -1,4 +1,4 @@
-const sheetToJSON = () => {
+const sheetToJSON = function()  {
 // ID of the Google Spreadsheet
 //  const spreadsheetID = "SPREADSHEET KEY";
 const spreadsheetID = "1XG0Eg4JPN5DV8pfbwEzQp2gCVuKQmORZmtaBuh-R3XA";
@@ -9,14 +9,15 @@ const spreadsheetID = "1XG0Eg4JPN5DV8pfbwEzQp2gCVuKQmORZmtaBuh-R3XA";
 // Replaced od6/public with 1/public
 const url = 'https://spreadsheets.google.com/feeds/list/' + spreadsheetID + '/1/public/values?alt=json';
 console.log(url);
-$.getJSON(url, data => {
+$.getJSON(url, function(data)  {
 
 const entry = data.feed.entry;
 console.log(entry);
 
 $(entry).each(
-() => {
-$('.results').prepend('<h2>'+this.gsx$name.$t+'</h2><p>'+this.gsx$alias+'</p><p>'+this.gsx$cost+'</p><p>'+this.gsx$type+'</p>');
+function (key, value)  {
+  console.log(key + ' ' + value);
+$('.results').prepend('<h2>'+this.gsx$name.$t+'</h2><p>'+this.gsx$alias.$t+'</p><p>'+this.gsx$cost.$t+'</p><p>'+this.gsx$type.$t+'</p>');
 });
 
 });
