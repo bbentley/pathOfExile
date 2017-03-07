@@ -1,0 +1,44 @@
+@charset "UTF-8";
+body{
+
+  background: #00c;
+}
+
+#content {
+  width: 480px;
+
+}
+
+
+#intro {
+  background: #ccf;
+  position: relative;
+}
+
+
+#update {
+  height: 100px;
+    width: 100px;
+    background: #800080
+}
+
+
+#selector {
+  height: 100px;
+    width: 100px;
+    background: #800080
+}
+
+
+#dropdown {
+  height: 100px;
+    width: 100px;
+    background: #108080
+}
+
+
+#quantity {
+  height: 100px;
+  width: 100px;
+  background: #100080;
+}
