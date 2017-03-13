@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>POE Convertor</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -33,20 +33,21 @@
         </div>
         <div id="calculator" class="row">
             <div class="dropdown col-xs-6">
-                <button class="btn btn-default dropdown-toggle" type="button" id="calculator-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <button class="btn btn-default dropdown-toggle" type="button" id="calculator-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="default">
 Currency Type
 <span class="caret"></span>
 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                  <!-- Generated dropdown list goes here -->
+                    <!-- Generated dropdown list goes here -->
                 </ul>
             </div>
             <div id="quantity" class="col-xs-6">
                 <form>
                     <div class="form-group col-xs-6">
-                        <input type="text" class="form-control" placeholder="Amount">
+                        <input type="number" class="form-control" placeholder="Amount">
                     </div>
-                    <button type="submit" class="btn btn-default col-xs-6">Convert</button>
+                    <!-- <button type="submit" class="btn btn-default col-xs-6">Convert</button> -->
+                    <button type="button" class="btn btn-default col-xs-6" disabled>Convert</button>
                 </form>
             </div>
         </div>

@@ -31,6 +31,7 @@ const jsonToList = function() {
         $(entry).each(
             function(key, value) { // console.log(entry);
                 //console.log();
+                // Checks that rows contain content
                 if (this.gsx$name.$t.trim()) {
                     $('#calculator ul').prepend('<li data-alias="' + this.gsx$alias.$t + '"><a href="#">' + this.gsx$name.$t + '</a></li>');
                 }
@@ -38,6 +39,23 @@ const jsonToList = function() {
             });
 
     });
+};
+
+const convertCalculator = function() {
+    // $('#calculator-button');
+};
+
+const checkButton = function() {
+
+    const $button = $('#calculator-button');
+    const $amount = $('#quantity div input');
+    const $convert = $('#quantity button');
+    if ($button.val() !== 'default' && $amount.val() > 0) {
+        $convert.attr('disabled', false);
+    } else {
+        $convert.attr('disabled', true);
+    }
+    console.log('hello');
 };
 
 //http://spreadsheets.google.com/feeds/list/o13394135408524254648.240766968415752635/od6/public/values
