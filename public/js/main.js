@@ -1,3 +1,4 @@
+'use strict';
 $(document).ready(function() {
     jsonToList();
 
@@ -25,16 +26,18 @@ $(document).ready(function() {
 
     });
 
+    const $amount = $('#quantity div input');
+    $amount.on('input', function() {
+        checkButton();
+    });
+
     const $convert = $('#quantity button');
     $convert.on('click', function() {
         console.log('button Clicked!');
         convertCalculator();
     });
 
-    const $amount = $('#quantity div input');
-    $amount.on('input', function() {
-        checkButton();
-    });
+
 
 }());
 // This works

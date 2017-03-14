@@ -1,3 +1,4 @@
+'use strict';
 const jsonToList = function() {
     // ID of the Google Spreadsheet
     //  const spreadsheetID = "SPREADSHEET KEY";
@@ -43,6 +44,12 @@ const jsonToList = function() {
 
 const convertCalculator = function() {
     // $('#calculator-button');
+    const $button = $('#calculator-button');
+    const $amount = $('#quantity div input');
+    const currencyType = $button.text().trim();
+    const currencyNum = $amount.val();
+    let myString = currencyType + 'is worth ' + currencyNum;
+    $('#update h1').after('<div>' + myString + '</div>');
 };
 
 const checkButton = function() {
