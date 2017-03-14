@@ -13,28 +13,25 @@ const jsonToList = function() {
     $.getJSON(url, function(data) {
 
         const entry = data.feed.entry;
-        //console.log(entry);
-
-        //         <div class="dropdown">
-        //   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        //     Dropdown
-        //     <span class="caret"></span>
-        //   </button>
-        //   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        //     <li><a href="#">Action</a></li>
-        //     <li><a href="#">Another action</a></li>
-        //     <li><a href="#">Something else here</a></li>
-        //     <li role="separator" class="divider"></li>
-        //     <li><a href="#">Separated link</a></li>
-        //   </ul>
-        // </div>
 
         $(entry).each(
             function(key, value) { // console.log(entry);
                 //console.log();
                 // Checks that rows contain content
                 if (this.gsx$name.$t.trim()) {
-                    $('#calculator ul').prepend('<li data-alias="' + this.gsx$alias.$t + '"><a href="#">' + this.gsx$name.$t + '</a></li>');
+                    $('#calculator ul').append('<li'
+                      + ' data-alias="'
+                      + this.gsx$alias.$t
+                      + '" data-cost="'
+                      + this.gsx$cost.$t
+                      + '" data-type="'
+                      + this.gsx$type.$t
+                      + '">'
+                      +'<a href="#">'
+                      + this.gsx$name.$t
+                      + '</a></li>'
+
+                    );
                 }
                 // $('.results').prepend('<h2>' + this.gsx$name.$t + '</h2><p>' + this.gsx$alias.$t + '</p><p>' + this.gsx$cost.$t + '</p><p>' + this.gsx$type.$t + '</p>');
             });
