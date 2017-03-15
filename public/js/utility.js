@@ -19,17 +19,17 @@ const jsonToList = function() {
                 //console.log();
                 // Checks that rows contain content
                 if (this.gsx$name.$t.trim()) {
-                    $('#calculator ul').append('<li'
-                      + ' data-alias="'
-                      + this.gsx$alias.$t
-                      + '" data-cost="'
-                      + this.gsx$cost.$t
-                      + '" data-type="'
-                      + this.gsx$type.$t
-                      + '">'
-                      +'<a href="#">'
-                      + this.gsx$name.$t
-                      + '</a></li>'
+                    $('#calculator ul').append('<li' +
+                        ' data-alias="' +
+                        this.gsx$alias.$t +
+                        '" data-cost="' +
+                        this.gsx$cost.$t +
+                        '" data-type="' +
+                        this.gsx$type.$t +
+                        '">' +
+                        '<a href="#">' +
+                        this.gsx$name.$t +
+                        '</a></li>'
 
                     );
                 }
@@ -45,8 +45,13 @@ const convertCalculator = function() {
     const $amount = $('#quantity div input');
     const currencyType = $button.text().trim();
     const currencyNum = $amount.val();
-    let myString = currencyType + 'is worth ' + currencyNum;
+    const currencyVal = currency(currencyType);
+    const nextCurrencyName = getName(currencyVal.type);
+    let myString = currencyType + ' is worth ' + currencyNum;
+    let nextString = nextCurrencyName + ' is next.'
+    console.log(currencyVal.type);
     $('#update h1').after('<div>' + myString + '</div>');
+    $('#update h1').after('<div>' + nextString + '</div>');
 };
 
 const checkButton = function() {
@@ -61,5 +66,76 @@ const checkButton = function() {
     }
     console.log('hello');
 };
+
+
+const currency = function(buttonText) {
+    let currencyData = {};
+    let type;
+    let alias;
+    let cost;
+    let name;
+    $('#calculator ul li').each(function() {
+
+        const $this = $(this);
+
+        type = $this.data().type;
+        alias = $this.data().alias;
+        cost = $this.data().cost;
+        name = $this.children().text();
+
+        // currencyData = {
+        //     name: {
+        //         'alias': alias,
+        //         'cost': cost,
+        //         'type': type
+        //     }
+        // };
+        currencyData[name] = {
+            'alias': alias,
+            'cost': cost,
+            'type': type
+        };
+        //currencyData.name['alias'] = alias;
+
+        //console.log(type + ' ' + alias + ' ' + cost + ' ' + name);
+        //console.log(currencyData);
+    });
+    for (var prop in currencyData) {
+        if (prop === buttonText) {
+            // console.log('currencyData.' + prop, '=', currencyData[prop]);
+            return currencyData[prop];
+        }
+
+    }
+    return false;
+
+
+};
+
+const getName = function(nextType) {
+const data = {};
+    let name;
+    let alias;
+
+    $('#calculator ul li').each(function() {
+
+        const $this = $(this);
+
+        alias = $this.data().alias;
+        name = $this.children().text();
+        data[alias] = {
+            'name': name
+        };
+    });
+    //console.log(data);
+    for (var prop in data) {
+        if (prop === nextType) {
+            return data[prop].name;
+        }
+
+    }
+    return false;
+};
+
 
 //http://spreadsheets.google.com/feeds/list/o13394135408524254648.240766968415752635/od6/public/values
