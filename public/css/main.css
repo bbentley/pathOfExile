@@ -1,46 +1,41 @@
 @charset "UTF-8";
-body{
-
-  background: #00c;
+body {
+    font-family: 'Gloria Hallelujah', cursive;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 
 #content {
-  /*width: 480px;*/
-
+    /*width: 480px;*/
 }
 
-
 #intro {
-  /*background: #ccf;
+    /*background: #ccf;
   position: relative;*/
 }
 
-
 #update {
-  /*height: 100px;
+    /*height: 100px;
     width: 100px;
     background: #800080*/
 }
-
 
 #selector {
-  /*height: 100px;
+    /*height: 100px;
     width: 100px;
     background: #800080*/
-    vertical-align: middle;
-    float: left;
+    /*vertical-align: middle;
+    float: left;*/
 }
 
-
 #dropdown {
-  /*height: 100px;
+    /*height: 100px;
     width: 100px;
     background: #108080*/
 }
 
-
 #quantity {
-  /*height: 100px;
+    /*height: 100px;
   width: 100px;
   background: #100080;*/
 }

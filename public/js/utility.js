@@ -43,15 +43,46 @@ const convertCalculator = function() {
     // $('#calculator-button');
     const $button = $('#calculator-button');
     const $amount = $('#quantity div input');
-    const currencyType = $button.text().trim();
+    let currencyType = $button.text().trim();
     const currencyNum = $amount.val();
-    const currencyVal = currency(currencyType);
-    const nextCurrencyName = getName(currencyVal.type);
-    let myString = currencyType + ' is worth ' + currencyNum;
-    let nextString = nextCurrencyName + ' is next.'
-    console.log(currencyVal.type);
-    $('#update h1').after('<div>' + myString + '</div>');
-    $('#update h1').after('<div>' + nextString + '</div>');
+    let nextCurrencyName;
+    let nextString;
+    let firstPass = true;
+    let howMany;
+    let cost;
+    let prevCost;
+    let x = 0;
+    do {
+
+        let currencyVal = currency(currencyType);
+        nextCurrencyName = getName(currencyVal.type);
+
+        console.log('nextCurrencyName: ' + nextCurrencyName);
+        if (firstPass === true) {
+            howMany = 'You want ' + currencyNum + ' of ' + currencyType;
+            cost = currencyNum;
+        } else {
+            cost = cost * prevCost;
+            howMany = 'This requires ' + cost + ' of ' + currencyType;
+
+        }
+
+        if (nextCurrencyName === false) {
+            nextString = 'Calculation finished.';
+
+        } else {
+            nextString = nextCurrencyName + ' is next.';
+
+        }
+        // console.log('nextString: ' + nextString)
+        $('#update h1').after('<div>' + howMany + '</div>');
+        $('#update h1').after('<div>' + nextString + '</div>');
+        currencyType = nextCurrencyName;
+        prevCost = currencyVal.cost;
+        firstPass = false;
+        console.log(currencyType);
+    }
+    while (currencyType !== false);
 };
 
 const checkButton = function() {
@@ -101,7 +132,7 @@ const currency = function(buttonText) {
         //console.log(currencyData);
     });
     for (var prop in currencyData) {
-        if (prop === buttonText) {
+        if (prop.toLowerCase().trim() === buttonText.toLowerCase().trim()) {
             // console.log('currencyData.' + prop, '=', currencyData[prop]);
             return currencyData[prop];
         }
@@ -113,7 +144,7 @@ const currency = function(buttonText) {
 };
 
 const getName = function(nextType) {
-const data = {};
+    const data = {};
     let name;
     let alias;
 
