@@ -51,6 +51,9 @@ const convertCalculator = function() {
     let howMany;
     let cost;
     let prevCost;
+    let outputString = '';
+    let currencyIcon = '';
+    let re = /\s+/g;
     let x = 0;
     do {
 
@@ -66,6 +69,10 @@ const convertCalculator = function() {
             howMany = 'This requires ' + cost + ' of ' + currencyType;
 
         }
+        currencyIcon = currencyType.replace(re, '_');
+        currencyIcon += '_inventory_icon.png';
+        console.log(currencyType);
+        console.log(currencyIcon);
 
         if (nextCurrencyName === false) {
             nextString = 'Calculation finished.';
@@ -75,14 +82,20 @@ const convertCalculator = function() {
 
         }
         // console.log('nextString: ' + nextString)
-        $('#update h1').after('<div>' + howMany + '</div>');
-        $('#update h1').after('<div>' + nextString + '</div>');
+        // $('#update h1').after('<div>' + howMany + '</div>');
+        // $('#update h1').after('<div>' + nextString + '</div>');
+        outputString +='<div>' + howMany + '</div>';
+        outputString += '<div>' + nextString + '</div>';
+        outputString += '<img src="images/'+ currencyIcon +'">';
+
         currencyType = nextCurrencyName;
         prevCost = currencyVal.cost;
         firstPass = false;
         console.log(currencyType);
     }
     while (currencyType !== false);
+    console.log(outputString);
+    $('#update').html(outputString);
 };
 
 const checkButton = function() {

@@ -1,0 +1,39 @@
+
+
+.content {
+    /*position:relative;*/
+    /*position: absolute;*/
+    /*clear:left;*/
+}
+
+.currency {
+    /*position:absolute;*/
+    /*width: 250px;*/
+    /*background-color: #800080;*/
+margin: auto;
+    border: 4px solid;
+    /*float: right;*/
+    width: 300px;
+    /*height: 2em;*/
+      height:50px;
+    vertical-align: bottom;
+    /*display:inline-block;*/
+    /*border-color: #000066;*/
+}
+
+.icon {
+    /*height: 2em;*/
+    float: right;
+    clear:both;
+    height:50px;
+}
+
+.Description {
+    float: left;
+    font-size: 20px;
+}
+.content::after{
+  content:"";
+  display: block;
+  clear: both;
+}
